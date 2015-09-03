@@ -81,4 +81,31 @@ public class Persona implements Serializable {
         this.fechaNacimiento = fechaNacimiento;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 47 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Persona other = (Persona) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Persona{" + "codigo=" + codigo + '}';
+    }
+
 }

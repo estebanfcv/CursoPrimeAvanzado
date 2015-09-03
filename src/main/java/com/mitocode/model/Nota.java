@@ -118,4 +118,33 @@ public class Nota implements Serializable {
         this.valorizacion = valorizacion;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 19 * hash + this.codigo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Nota other = (Nota) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Nota{" + "codigo=" + codigo + '}';
+    }
+    
+    
+
 }
