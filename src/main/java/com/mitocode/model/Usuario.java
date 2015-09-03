@@ -7,6 +7,7 @@ package com.mitocode.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,7 +24,7 @@ import javax.persistence.Table;
 public class Usuario implements Serializable {
 
     @Id
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "codigo", nullable = false)
     private Persona persona;
 

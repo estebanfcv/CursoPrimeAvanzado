@@ -15,7 +15,7 @@ and open the template in the editor.
     </h:head>
     <body>
         <h:form>
-            <p:messages id="mensaje" autoUpdate="false"/>
+            <p:growl id="mensaje" autoUpdate="false" severity="info, fatal" showSummary="true" showDetail="true" widgetVar="avisos"/>
             <p:fieldset legend="Datos personales">
                 <h:panelGrid columns="3" id="pgDatos">
                     <p:outputLabel for="txtNombres" value="Nombres"/>
@@ -34,13 +34,20 @@ and open the template in the editor.
                     <p:message for="rdbSexo"/>
 
                     <p:outputLabel for="txtFecha" value="Fec. Nacimiento"/>
-                    <p:calendar id="txtFecha" locale="es" value="#{usuarioController.persona.fechaNacimiento}" required="true"/>
+                    <p:calendar id="txtFecha" locale="es" value="#{usuarioController.persona.fechaNacimiento}" required="true" />
                     <p:message for="txtFecha"/>
 
                 </h:panelGrid>
             </p:fieldset>
             <p:fieldset legend="Datos de la cuenta">
                 <h:panelGrid columns="3" id="pgCuenta">
+                    <p:outputLabel for="cboTipo" value="Tipo de Cuenta"/>
+                    <p:selectOneMenu id="cboTipo" value="#{usuarioController.usuario.tipo}" required="true" requiredMessage="Campo requerido">
+                        <f:selectItem itemValue="A" itemLabel="Administrador"/>
+                        <f:selectItem itemValue="O" itemLabel="Operario"/>
+                    </p:selectOneMenu>
+                    <p:message for="cboTipo"/>
+                    
                     <p:outputLabel for="txtUsuario" value="Usuario"/>
                     <p:inputText id="txtUsuario" value="#{usuarioController.usuario.usuario}" required="true" requiredMessage="Campo requerido"/>
                     <p:message for="txtUsuario"/>
@@ -55,7 +62,8 @@ and open the template in the editor.
                     <p:password id="clave2" required="true" requiredMessage="Campo requerido"/>
                     <p:message for="clave2"/>
                 </h:panelGrid>
-                <p:commandButton value="Registrar" icon="ui-icon-check" update="pgDatos, pgCuenta"/>
+                <p:commandButton value="Registrar" icon="ui-icon-check" update="pgDatos, pgCuenta, mensaje" 
+                                 actionListener="#{usuarioController.registrar()}"/>
             </p:fieldset>
         </h:form>
         <h:outputScript library="js" name="spanishLocale.js"/>
