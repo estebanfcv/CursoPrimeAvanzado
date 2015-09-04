@@ -6,7 +6,7 @@
 
 package com.mitocode.ejb;
 
-import com.mitocode.model.Usuario;
+import com.mitocode.model.Menu;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -15,22 +15,20 @@ import javax.ejb.Local;
  * @author estebanfcv
  */
 @Local
-public interface UsuarioFacadeLocal {
+public interface MenuFacadeLocal {
 
-    void create(Usuario usuario);
+    void create(Menu menu);
 
-    void edit(Usuario usuario);
+    void edit(Menu menu);
 
-    void remove(Usuario usuario);
+    void remove(Menu menu);
 
-    Usuario find(Object id);
+    Menu find(Object id);
 
-    List<Usuario> findAll();
+    List<Menu> findAll();
 
-    List<Usuario> findRange(int[] range);
+    List<Menu> findRange(int[] range);
 
     int count();
-    
-    Usuario iniciarSesion(Usuario us);
     
 }

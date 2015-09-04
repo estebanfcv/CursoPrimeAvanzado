@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import javax.ejb.EJB;
+import javax.inject.Inject;
 
 /**
  *
@@ -23,11 +24,12 @@ public class CategoriaController implements Serializable {
 
     @EJB
     private CategoriaFacadeLocal categoriaEJB;
+    @Inject
     private Categoria categoria;
 
     @PostConstruct
     public void init() {
-        categoria = new Categoria();
+//        categoria = new Categoria();
     }
 
     public void registrar() {
